@@ -7,7 +7,7 @@ import pandas as pd
 
 # Fungsi untuk memuat token dari file HUGGINGFACE_TOKEN
 def load_token_from_file():
-    with open("HUGGINGFACE_TOKEN", "r") as file:
+    with open("HUGGINGFACE_TOKEN.txt", "r") as file:
         for line in file:
             if line.startswith("TOKEN="):
                 return line.strip().split("=")[1]
