@@ -5,7 +5,6 @@ from huggingface_hub import login as hf_login
 from datasets import load_dataset, Dataset
 import pandas as pd
 
-# Fungsi untuk memuat token dari file HUGGINGFACE_TOKEN
 def load_token_from_file():
     with open("HUGGINGFACE_TOKEN.txt", "r") as file:
         for line in file:
@@ -13,12 +12,10 @@ def load_token_from_file():
                 return line.strip().split("=")[1]
     raise ValueError("Token not found in HUGGINGFACE_TOKEN file.")
 
-# Fungsi untuk login ke Hugging Face
 def user_login():
     token = load_token_from_file()
     hf_login(token=token)
 
-# Fungsi untuk menampilkan dataset dengan indeks
 def dataset_view():
     dataset = load_dataset("Lvyn/bot-ppdb", split="train")
     data_df = dataset.to_pandas()
@@ -32,7 +29,6 @@ def dataset_view():
         print(f"  Assistant: {assistant}")
         print("-" * 30)
 
-# Fungsi untuk memproses input indeks
 def process_indices(indices_input, max_index):
     indices_to_remove = set()
     for item in indices_input:
